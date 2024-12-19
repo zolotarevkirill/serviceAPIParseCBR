@@ -1,6 +1,7 @@
 package ru.cbr.parserservicecurrency.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import ru.cbr.parserservicecurrency.model.CurrencyRate;
 import ru.cbr.parserservicecurrency.model.CurrencyRateKey;
 import ru.cbr.parserservicecurrency.repository.CurrencyRateRepository;
@@ -39,6 +40,7 @@ public class CurrencyRateParser {
     }
 
     @PostConstruct
+    @Scheduled(cron = "0 0 * * * *")
     public void parseXMLForCBR() throws ParserConfigurationException, IOException, SAXException {
 
         if (!isUrlAccessible(serviceUrl)) {
