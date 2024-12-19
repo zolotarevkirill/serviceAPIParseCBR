@@ -1,0 +1,12 @@
+CREATE TABLE currency_rates (
+                                char_code text,
+                                timestamp timestamp,
+                                num_code int,
+                                nominal int,
+                                name text,
+                                value decimal,
+                                vunit_rate decimal,
+                                previous_close decimal,
+                                close decimal,
+                                PRIMARY KEY ((char_code), timestamp)
+) WITH CLUSTERING ORDER BY (timestamp DESC);
